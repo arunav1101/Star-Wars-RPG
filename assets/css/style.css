@@ -1,0 +1,192 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("../images/Background.jpg");
+}
+
+#game-rules-section {
+    width: 450px;
+    background: tan;
+}
+
+.game-rules {
+    color: green;
+    width: 400px;
+
+
+    margin-left: 10px;
+}
+
+.text-count {
+    background: green;
+    width: 130px;
+    color: white;
+}
+
+.row {
+    width: 80%;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.toprow {
+    width: 100%;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+    padding: 10px;
+    width: 300px;
+    /* float: left; */
+    margin-left: 10px;
+    /* background-color: paleturquoise; */
+    height: auto;
+}
+
+h1 {
+    width: 70%;
+    /* margin: 10px auto; */
+    color: #d54d7b;
+    font-family: "Great Vibes", cursive;
+    font-size: 60px;
+    line-height: 120%;
+    font-weight: normal;
+    text-align: left;
+    text-shadow: 0 1px 1px #fff;
+}
+
+h2,
+h3 {
+    width: 70%;
+    margin: 0 auto;
+    /* color: #f2f2f2;  */
+    background: #ff4a4a;
+    font-size: 50px;
+    /* line-height: 120%;  */
+    font-weight: 700;
+    text-align: center;
+    /* float: left;  */
+    padding: 10px;
+    font-family: 'Libre Baskerville', serif;
+}
+
+.mycharacter {
+    width: 25%;
+    background: green;
+}
+
+.defender {
+    width: 70%;
+    background: yellow;
+}
+
+h3,
+#your-count {
+    background: green;
+    /* margin-top: 150px; */
+    margin-left: 10px;
+}
+
+h6 {
+    width: 27%;
+    margin: 0 auto;
+    /* color: #f2f2f2;  */
+    background: #ff4a4a;
+    font-size: 20px;
+    line-height: 120%;
+    font-weight: 700;
+    text-align-last: left;
+    /* float: left;  */
+    /* padding: 10px;  */
+    font-family: 'Libre Baskerville', serif;
+}
+
+#your-count {
+    margin-top: 10px;
+}
+
+p {
+    font-family: 'Droid serif', serif;
+    font-size: 15px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 120%;
+    margin: 0 0 12px;
+    text-align: left;
+}
+
+
+.crystal-image {
+    width: 200px;
+    height: 200px;
+    padding-left: 10px;
+    text-align-last: center;
+    display: flex;
+}
+
+.container {
+    position: relative;
+    /* width: 50%;
+    max-width: 100px; */
+    width: 200px;
+    height: 200px;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);
+    /* Black see-through */
+    color: #f1f1f1;
+    width: 95%;
+    transition: .5s ease;
+    opacity: 0;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+    margin-left: 10px
+}
+
+.container:hover .overlay {
+    opacity: 1;
+}
+
+/* .container:hover .overlay {
+    opacity: 1;
+  } */
+
+@media screen and (max-width: 980px) {
+    .column {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .column {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 640px) {
+
+    #imageHTML,
+    h1,
+    h2 {
+        width: 100%;
+    }
+
+    .column,
+    .row {
+        display: block;
+    }
+
+    .row {
+        position: static;
+        width: 90%;
+    }
+
+}
