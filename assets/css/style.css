@@ -126,14 +126,25 @@ p {
     display: flex;
 }
 
-.container {
+/* img{
+    width: 200px;
+    height: 200px;
+    padding-left: 10px;
+    text-align-last: center;
+    display: flex; 
+} */
+
+.container ,.newenemies,.character-self{
     position: relative;
     /* width: 50%;
     max-width: 100px; */
     width: 200px;
     height: 200px;
 }
-
+.defender{
+    width: 40%;
+    background: coral;
+}
 .overlay {
     position: absolute;
     bottom: 0;
@@ -151,9 +162,13 @@ p {
     margin-left: 10px
 }
 
-.container:hover .overlay {
+.container,.newenemies,.character-self:hover .overlay {
     opacity: 1;
 }
+
+/* .character-self:hover .overlay {
+    opacity: 1;
+} */
 
 /* .container:hover .overlay {
     opacity: 1;

@@ -13,7 +13,7 @@
     <div class="toprow">
         <div id="crystals" class="row players"></div>
     </div>
-    <div>
+    <div class="myclasses">
         <div>Your Character</div>
         <h2 class="mycharacter"> <span id="Your-Character"></span></h2>
         <div class="enemies">Enemies Available to Attack Fight Section</div>
@@ -24,8 +24,11 @@
     </div>
 
 
-    <p class="game-rules text-count">Your total score is:</p>
-    <h2 class="text-count" id="your-count"></h2>
+   <div>
+        <h6 class="column">Wins:<span id="wins-text"></span></br>
+            losses:<span id="losses-text"></span></h6>
+</div>
+    <!-- <h2 class="text-count" id="your-count"></h2> -->
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -37,31 +40,35 @@
                 name: 'Ackbar',
                 image: "assets/images/AckbarStanding.jpg",
                 value: 100,
-                power:10
+                power: 12
             },
             {
                 name: 'Greedo',
                 image: "assets/images/GreedoStarWars.jpg",
                 value: 120,
-                power:20
+                power: 5
             },
             {
                 name: 'Mace',
                 image: "assets/images/Mace_Windu.png",
                 value: 150,
-                power:30
+                power: 8
             },
             {
                 name: 'K-250',
                 image: "assets/images/star-warsk250.jpg",
                 value: 110,
-                power:40
+                power: 25
             }
         ]
 
         var targetNumber;
         var imageCrystal;
-        var counter = mywins = mylooses = lastScore = 0;
+        var counter = mywins = mylooses = winner = looser = lastScore = 0;
+        var self_player_value = defender_value = self_player_power = defender_power = 0;
+        console.log("top", mywins);
+
+        self_player_power = 6;
 
         function startGame() {
             counter = 0;
@@ -78,23 +85,26 @@
         }
 
         function displayScreen() {
-            $("#number-to-guess").text(targetNumber);
-            $("#your-count").text(counter);
+            $("#wins-text").text(winner);
+            $("#losses-text").text(looser);
         }
 
         $(document).ready(function () {
             $.each(crystalType, function (key, crystalName) {
-                //             <div class="row">
-                // <h2 class="column number"> <span id="number-to-guess"></span></h2>
-                // <h6 class="column">
-
                 $("#crystals").append(
-                    `<div class = "container ${crystalName.name}" ><img src= ${crystalName.image} class = "crystal-image column" crystal-name = ${crystalName.name} data-charvalue= ${crystalName.value} power-value = ${crystalName.power}></img><div class= overlay>${crystalName.name}</br>${crystalName.value}</div></div>`
+                    `<div class = "container ${crystalName.name}" total-value= ${crystalName.value} playerName =${crystalName.name} power-value = ${crystalName.power}><img src= ${crystalName.image} class = "crystal-image column" crystal-name = ${crystalName.name} data-charvalue= ${crystalName.value} power-value = ${crystalName.power}></img><div class= overlay>${crystalName.name}</br>${crystalName.value}</div></div>`
                 );
             })
-            // startGame();
+            startGame();
 
             $(".container").on("click", function () {
+
+
+                //   console.log($(this).attr("playername"));
+                self_player_value = $(this).attr("total-value");
+                //  self_player_power = $(this).attr("power-value");
+
+                console.log(self_player_value, self_player_power);
                 // $('#td_id').removeClass('change_me').addClass('character-self');
                 $(this).removeClass("container").addClass('character-self');
                 var myDiv = $(this).remove();
@@ -106,11 +116,58 @@
             })
 
             $(document.body).on("click", ".enemies img", function () {
-                alert($(this).attr("src"));
+
+                defender_value = $(this).attr("data-charvalue")
+                defender_power = $(this).attr("power-value")
+
+                // alert($(this).attr("data-charvalue"));
                 $(this).removeClass("newenemies").addClass('defender-player');
                 var mynewDiv = $(this).remove();
                 mynewDiv.appendTo('.defender');
+                mywins = mylooses = 0
             });
+
+
+            $('#Attack').on("click", function () {
+                console.log("inside", mywins, mylooses)
+                if (mywins > 0 || mylooses > 0) {
+                    $('.defender').remove();
+                    $('.myclasses').append("<div class = defender></div>");
+                  console.log("inside if", mywins);
+                    return;
+                } else {
+                    console.log("Before",
+                        self_player_value,
+                        self_player_power,
+                        defender_value,
+                        defender_power,
+                    );
+                    self_player_value -= defender_power;
+                    defender_value -= self_player_power;
+
+                    if (defender_value <= 0) {
+                        console.log("mywins1",winner)
+                        winner +=1;
+                        mywins++;
+                        console.log("Wins: ", mywins);
+                    } else if (self_player_value <= 0) {
+                        looser +=1;
+                        mylooses++;
+                        console.log("Losses:", mylooses);
+                    }
+
+
+                    console.log("After",
+                        self_player_value,
+                        self_player_power,
+                        defender_value,
+                        defender_power,
+                    );
+                    self_player_power += 6;
+                }
+                displayScreen();
+            })
+          
         })
     </script>
 </body>
