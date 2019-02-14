@@ -3,7 +3,23 @@
 }
 
 body {
-    background-image: url("../images/Background.jpg");
+    background: black;
+    /* background-image: url("../images/Background.jpg"); */
+}
+
+#Attack {
+    background-color: red;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50%;
 }
 
 #game-rules-section {
@@ -14,8 +30,6 @@ body {
 .game-rules {
     color: green;
     width: 400px;
-
-
     margin-left: 10px;
 }
 
@@ -45,12 +59,13 @@ body {
     height: auto;
 }
 
-h1 {
+h1,
+h4 {
     width: 70%;
     /* margin: 10px auto; */
-    color: #d54d7b;
+    color: white;
     font-family: "Great Vibes", cursive;
-    font-size: 60px;
+    font-size: 40px;
     line-height: 120%;
     font-weight: normal;
     text-align: left;
@@ -62,7 +77,7 @@ h3 {
     width: 70%;
     margin: 0 auto;
     /* color: #f2f2f2;  */
-    background: #ff4a4a;
+    /* background: #ff4a4a; */
     font-size: 50px;
     /* line-height: 120%;  */
     font-weight: 700;
@@ -74,12 +89,7 @@ h3 {
 
 .mycharacter {
     width: 25%;
-    background: green;
-}
-
-.defender {
-    width: 70%;
-    background: yellow;
+    /* background: green; */
 }
 
 h3,
@@ -126,25 +136,22 @@ p {
     display: flex;
 }
 
-/* img{
-    width: 200px;
-    height: 200px;
-    padding-left: 10px;
-    text-align-last: center;
-    display: flex; 
-} */
-
-.container ,.newenemies,.character-self{
+.container,
+.character-self,
+.newenemies,
+.defender-player {
     position: relative;
     /* width: 50%;
     max-width: 100px; */
     width: 200px;
     height: 200px;
 }
-.defender{
+
+.defender {
     width: 40%;
-    background: coral;
+    /* background: coral; */
 }
+
 .overlay {
     position: absolute;
     bottom: 0;
@@ -162,17 +169,22 @@ p {
     margin-left: 10px
 }
 
-.container,.newenemies,.character-self:hover .overlay {
+.container:hover .overlay {
     opacity: 1;
 }
 
-/* .character-self:hover .overlay {
-    opacity: 1;
-} */
 
-/* .container:hover .overlay {
+.character-self:hover .overlay {
     opacity: 1;
-  } */
+}
+
+.newenemies:hover .overlay {
+    opacity: 1;
+}
+
+.defender-player:hover .overlay {
+    opacity: 1;
+  }
 
 @media screen and (max-width: 980px) {
     .column {
