@@ -19,7 +19,7 @@ body {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 50%;
+    border-radius: 20%;
 }
 
 #game-rules-section {
@@ -102,14 +102,22 @@ h3,
 h6 {
     width: 27%;
     margin: 0 auto;
-    /* color: #f2f2f2;  */
     background: #ff4a4a;
     font-size: 20px;
     line-height: 120%;
     font-weight: 700;
     text-align-last: left;
-    /* float: left;  */
-    /* padding: 10px;  */
+    font-family: 'Libre Baskerville', serif;
+}
+
+h5 {
+    width: 27%;
+    margin: 0 auto;
+    color: #f2f2f2;
+    font-size: 20px;
+    line-height: 120%;
+    font-weight: 700;
+    text-align-last: left;
     font-family: 'Libre Baskerville', serif;
 }
 
@@ -128,7 +136,7 @@ p {
 }
 
 
-.crystal-image {
+.character-image {
     width: 200px;
     height: 200px;
     padding-left: 10px;
@@ -184,7 +192,7 @@ p {
 
 .defender-player:hover .overlay {
     opacity: 1;
-  }
+}
 
 @media screen and (max-width: 980px) {
     .column {

@@ -11,28 +11,33 @@
 <body>
     <h1>RPG Star Wars!</h1>
     <div class="toprow">
-        <div id="crystals" class="row players"></div>
+        <div id="characters" class="row players"></div>
     </div>
     </br></br></br>
     <div class="myclasses">
         <div>
             <h1>Your Character</h1>
         </div>
-        <h2 class="mycharacter"> <span id="Your-Character"></span></h2>
-        <div class="enemies">
-            <h1>Enemies Available to Attack Fight Section </h1>
-        </div>
-
-        <button id="Attack" class="showimagediv">Attack</button>
-        <h1>Defender</h1>
-        <div class="defender"></div>
+       <div class ="row playerDefender">
+        <h2 class="mycharacter column"> <span id="Your-Character"></span></h2>
+        <button id="Attack" class="showimagediv column">Attack</button>
+        <!-- <h1>Defender</h1> -->
+        <h2 class="defender column"> <span id="Defender"></span> </h2>
     </div>
+        <div class="enemies">
+                <h1>Enemies Available to Attack Fight Section </h1>
+            </div>
+        <!-- <div class="defender"></div> -->
+    </div>
+<div>
+        <h5 class="column"><span id="results-text"></span></span></h5>
+</div>
 
+    <!-- <div>
 
-    <div>
         <h6 class="column">Wins:<span id="wins-text"></span></br>
             losses:<span id="losses-text"></span></h6>
-    </div>
+    </div> -->
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
