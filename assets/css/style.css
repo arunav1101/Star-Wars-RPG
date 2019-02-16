@@ -4,7 +4,7 @@
 
 body {
     /* background: black; */
-    background-image: url("../images/Background.jpg");
+    background-image: url("../images/background-bg.webp");
 }
 
 #Attack {
@@ -170,7 +170,7 @@ h1,
 h4 {
     width: 70%;
     /* margin: 10px auto; */
-    color: #d15858;
+    color: rgb(171, 109, 233);;
     /* color: white; */
     font-family: "Great Vibes", cursive;
     font-size: 40px;
@@ -183,6 +183,7 @@ h4 {
 #topheader{
     text-align: center;
     margin-bottom: 40px;
+    color:rgb(171, 109, 233);
 }
 @media screen and (max-width: 980px) {
     .column {
