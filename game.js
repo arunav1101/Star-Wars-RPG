@@ -4,7 +4,7 @@ function randomnumber(min, max) {
 var characterType = [{
     name: 'Ackbar',
     image: "assets/images/AckbarStanding.jpg",
-    value: 100,
+    value: 110,
     power: 12
   },
   {
@@ -22,13 +22,14 @@ var characterType = [{
   {
     name: 'K-250',
     image: "assets/images/star-warsk250.jpg",
-    value: 110,
-    power: 25
+    value: 140,
+    power: 15
   }
 ]
 
 var targetNumber;
-var imageCharacter;
+var attackButtonOpacity = 0;
+var imageCharacter,self_player_name;
 var counter = mywins = mylooses = winner = looser = lastScore = 0;
 var self_player_value = defender_value = self_player_power = defender_power = 0;
 
@@ -51,8 +52,11 @@ function resetCharacterValues() {
 function removeDefender() {
   $('.defender').remove();
   $('.playerDefender').append("<div class = defender></div>");
+  $('#Attack').css('opacity', '0');
 }
 $(document).ready(function () {
+  $('#Attack').css('opacity', '0');
+
   $.each(characterType, function (key, characterName) {
     $("#characters").append(
       `<div class = "container ${characterName.name}" total-value= ${characterName.value} player-name =${characterName.name} power-value = ${characterName.power}><img src= ${characterName.image} class = "character-image column" character-name = ${characterName.name} data-charvalue= ${characterName.value} power-value = ${characterName.power}></img><div class= overlay>${characterName.name}</br>${characterName.value}</div></div>`
@@ -62,6 +66,7 @@ $(document).ready(function () {
 
   $(".container").on("click", function () {
     self_player_value = $(this).attr("total-value");
+    self_player_name = $(this).attr("player-name");
     $(this).removeClass("container").addClass('character-self');
     var myDiv = $(this).remove();
     myDiv.appendTo('.mycharacter');
@@ -72,12 +77,16 @@ $(document).ready(function () {
 
   $(document.body).on("click", ".enemies .newenemies", function () {
     if ((($('.defender .defender-player').length) < 1) && looser === 0) {
+      $('#Attack').css('opacity', '1');
       defender_value = $(this).attr("total-value")
       defender_power = $(this).attr("power-value")
       $(this).removeClass("newenemies").addClass('defender-player');
       var mynewDiv = $(this).remove();
       mynewDiv.appendTo('.defender');
       mywins = mylooses = 0
+      if (($('.enemies .newenemies').length) < 1){
+        $('#textenemies').text('No Enemies left to fight!!')
+      }
     } else {
       return;
     }
@@ -97,14 +106,16 @@ $(document).ready(function () {
           mywins++;
           removeDefender();
           if (winner === 3) {
-            $('#results-text').text("Awesome! You Won!!!")
+            $('.enemies').remove();
+            $('#results-text').html(`<h1>Awesome ${self_player_name} ! You Won!!!</h1>`)
           }
         } else if (self_player_value <= 0) {
           looser += 1;
           mylooses++;
-          $('#results-text').text("You loose!!!")
+          $('.enemies').remove();
+          $('#results-text').html(`<h1>You loose ${self_player_name}!!!</h1>`)
           removeDefender();
-          return;
+          // return;
         }
         $('.mycharacter .overlay').html($('.character-self').attr("player-name") + '<br/>' + self_player_value);
         $('.defender-player .overlay').html($('.defender-player').attr("player-name") + '<br/>' + defender_value);
